@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ZapShop</string>
     <string name="main_toolbar_title">ZapShop</string>
+    <string name="mianTab1">Легковые</string>
+    <string name="mianTab2">Грузовые</string>
+    <string name="mianTab3">Разбор</string>
+    <string name="item_name">ПАТРУБОК ДРОССЕЛЬНОЙ ЗАСЛОНКИ, ELECTRONIC CONTROL (GMF3D)</string>
+    <string name="article">Артикул:</string>
 </resources>
