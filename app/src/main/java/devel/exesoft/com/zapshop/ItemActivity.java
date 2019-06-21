@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ListView;
 
-import devel.exesoft.com.zapshop.adapters.BrandGridAdapter;
 import devel.exesoft.com.zapshop.adapters.ItemAdapter;
 
 public class ItemActivity extends AppCompatActivity {
