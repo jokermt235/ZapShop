@@ -1,12 +1,15 @@
 package devel.exesoft.com.zapshop.models;
 
-public class Cart {
+import io.realm.RealmObject;
+
+public class Cart extends RealmObject {
     private long id;
     private long item_id;
     private String item_title;
     private long item_price;
     private long item_count;
     private String item_unit;
+    private String device_id;
 
     public void setId(long id) {
         this.id = id;
@@ -54,5 +57,13 @@ public class Cart {
 
     public String getItem_unit() {
         return item_unit;
+    }
+
+    public void setDevice_id(String device_id) {
+        this.device_id = device_id;
+    }
+
+    public String getDevice_id() {
+        return device_id;
     }
 }
