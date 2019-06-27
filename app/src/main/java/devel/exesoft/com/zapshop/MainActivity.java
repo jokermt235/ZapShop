@@ -1,9 +1,12 @@
 package devel.exesoft.com.zapshop;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+
 import devel.exesoft.com.zapshop.controlles.CategoryController;
 import devel.exesoft.com.zapshop.databinding.ActivityMainBinding;
 import devel.exesoft.com.zapshop.view_model.MainViewModel;
@@ -33,4 +36,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId  = item.getItemId();
+        switch (itemId){
+            case R.id.main_toolbar_cart: mainViewModel.onCartItemClicked();break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
