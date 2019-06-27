@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="devel.exesoft.com.zapshop.view_model.MainViewModel"/>
+    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +33,8 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/banner_pager"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:background="@mipmap/engine">
         </android.support.v4.view.ViewPager>
 
         <android.support.design.widget.TabLayout
@@ -60,7 +67,6 @@
             android:backgroundTint="@android:color/darker_gray"
             android:gravity="center"
             android:numColumns="3" />
-
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
+</layout>

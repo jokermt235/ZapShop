@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/brand_grid_image"
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="96dp"
         android:paddingStart="5dp"
         android:paddingTop="5dp"
         android:paddingEnd="5dp"
@@ -27,4 +27,10 @@
         android:text="Honda"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_models"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </LinearLayout>

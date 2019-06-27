@@ -1,28 +1,30 @@
 package devel.exesoft.com.zapshop;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.GridView;
-
-import devel.exesoft.com.zapshop.adapters.MainCatAdapter;
+import devel.exesoft.com.zapshop.controlles.CategoryController;
+import devel.exesoft.com.zapshop.databinding.ActivityMainBinding;
+import devel.exesoft.com.zapshop.view_model.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    GridView mainCatGridview;
+    public MainViewModel mainViewModel;
+
+    public ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
-        toolbar.setTitle(getString(R.string.main_toolbar_title));
-        setSupportActionBar(toolbar);
-        initMainGrid();
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainViewModel = new MainViewModel(this);
+        activityMainBinding.setViewModel(mainViewModel);
+        activityMainBinding.executePendingBindings();
+        activityMainBinding.mainToolbar.setTitle(getString(R.string.main_toolbar_title));
+        activityMainBinding.mainToolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        setSupportActionBar(activityMainBinding.mainToolbar);
+        CategoryController.getCategories(this);
     }
 
     @Override
@@ -31,17 +33,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void initMainGrid(){
-        mainCatGridview = findViewById(R.id.main_cat_grid);
-        String[] items = {"Мтор","Ходовка", "Трансмиссия","Кузов","Шасси"};
-        Bitmap[] images = {
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_directions_car_black_24dp),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_directions_car_black_24dp),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_directions_car_black_24dp),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_directions_car_black_24dp),
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_directions_car_black_24dp)
-        };
-        MainCatAdapter adapter = new MainCatAdapter(MainActivity.this, items, images );
-        mainCatGridview.setAdapter(adapter);
-    }
 }

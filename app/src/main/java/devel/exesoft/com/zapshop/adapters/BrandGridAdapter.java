@@ -1,8 +1,6 @@
 package devel.exesoft.com.zapshop.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,26 +8,30 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import devel.exesoft.com.zapshop.BrandActivity;
-import devel.exesoft.com.zapshop.ItemActivity;
 import devel.exesoft.com.zapshop.R;
+import devel.exesoft.com.zapshop.controlles.ModelController;
+import devel.exesoft.com.zapshop.models.Brand;
 
 public class BrandGridAdapter extends BaseAdapter {
 
     private Context mContext;
 
-    private final String[] gridViewString;
-    private final Bitmap[] gridViewImageBitmap;
+    private BrandActivity activity;
 
-    public BrandGridAdapter(Context c, String[] gridViewString, Bitmap[] gridViewImageBitmap) {
-        this.mContext = c;
-        this.gridViewString = gridViewString;
-        this.gridViewImageBitmap = gridViewImageBitmap;
+    private ArrayList<Brand> brands;
+
+    public BrandGridAdapter(BrandActivity activity, ArrayList<Brand> brands) {
+        this.mContext = activity.getApplicationContext();
+        this.brands = brands;
+        this.activity = activity;
     }
 
     @Override
     public int getCount() {
-        return gridViewString.length;
+        return this.brands.size();
     }
 
     @Override
@@ -43,7 +45,7 @@ public class BrandGridAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(final int i, View convertView, ViewGroup viewGroup) {
         View view = null;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -59,12 +61,13 @@ public class BrandGridAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        //viewHolder.imageView.setImageBitmap(gridViewImageBitmap[i]);
-        viewHolder.textView.setText(gridViewString[i]);
+        viewHolder.imageView.setImageBitmap(brands.get(i).getImage());
+        viewHolder.textView.setText(brands.get(i).getTitle());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, ItemActivity.class));
+                activity.brand_id = brands.get(i).getId();
+                ModelController.getModels(activity, view, brands.get(i).getId());
             }
         });
         return view;
@@ -75,8 +78,8 @@ public class BrandGridAdapter extends BaseAdapter {
         final TextView textView;
 
         ViewHolder(View view) {
-            imageView = (ImageView) view.findViewById(R.id.brand_grid_image);
-            textView = (TextView) view.findViewById(R.id.brand_grid_title);
+            imageView = view.findViewById(R.id.brand_grid_image);
+            textView = view.findViewById(R.id.brand_grid_title);
         }
     }
 }

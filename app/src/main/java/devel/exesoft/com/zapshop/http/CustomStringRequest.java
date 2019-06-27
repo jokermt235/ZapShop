@@ -20,6 +20,7 @@ import java.util.Map;
 public class CustomStringRequest extends StringRequest {
 
     private static String TAG = "CustomStringRequest";
+    private static String access_token = "a4d5c33e12795c21a3e40a53d94ddfd0";
     private JSONObject body;
     private JSONArray bodyArray;
     public void setBody(JSONObject pBody){
@@ -69,6 +70,8 @@ public class CustomStringRequest extends StringRequest {
         Map<String, String> headers = new HashMap<>();
 
         headers.put("Content-Type", "application/json; charset=UTF-8");
+
+        headers.put("Authorization" , "Bearer "+ access_token);
 
         headers.put("Accept", "application/json");
 

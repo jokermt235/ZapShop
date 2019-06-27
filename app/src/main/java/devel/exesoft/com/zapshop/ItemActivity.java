@@ -1,46 +1,42 @@
 package devel.exesoft.com.zapshop;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.ListView;
-
-import devel.exesoft.com.zapshop.adapters.ItemAdapter;
+import devel.exesoft.com.zapshop.controlles.ItemController;
+import devel.exesoft.com.zapshop.databinding.ActivityItemBinding;
+import devel.exesoft.com.zapshop.view_model.ItemViewModel;
 
 public class ItemActivity extends AppCompatActivity {
 
-    public ListView itemListView;
+    public ItemViewModel itemViewModel;
+
+    public ActivityItemBinding activityItemBinding;
+
+    public long collection_id;
+
+    public long model_id;
+
+    public long brand_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item);
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
-        toolbar.setTitle(getString(R.string.main_toolbar_title));
-        setSupportActionBar(toolbar);
-        initItemList();
+        activityItemBinding = DataBindingUtil.setContentView(this, R.layout.activity_item);
+        collection_id = getIntent().getLongExtra("collection_id",1);
+        model_id = getIntent().getLongExtra("model_id",1);
+        brand_id  = getIntent().getLongExtra("brand_id",1);
+        itemViewModel = new ItemViewModel(this);
+        activityItemBinding.setViewModel(itemViewModel);
+        activityItemBinding.mainToolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        setSupportActionBar(activityItemBinding.mainToolbar);
+        ItemController.getItems(this, collection_id, brand_id, model_id);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    public void initItemList(){
-        itemListView = findViewById(R.id.item_listview);
-        String[] items = {"Хонда","Мазда", "БМВ","VW","Лексус"};
-        Bitmap[] images = {
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image)
-        };
-        ItemAdapter adapter = new ItemAdapter(ItemActivity.this, items, images );
-        itemListView.setAdapter(adapter);
     }
 }

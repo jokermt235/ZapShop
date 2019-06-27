@@ -1,46 +1,42 @@
 package devel.exesoft.com.zapshop;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.GridView;
-
-import devel.exesoft.com.zapshop.adapters.BrandGridAdapter;
-import devel.exesoft.com.zapshop.adapters.MainCatAdapter;
+import devel.exesoft.com.zapshop.controlles.BrandController;
+import devel.exesoft.com.zapshop.databinding.ActivityBrandBinding;
+import devel.exesoft.com.zapshop.view_model.BrandViewModel;
 
 public class BrandActivity extends AppCompatActivity {
 
-    public GridView brandGridView;
+    public BrandViewModel brandViewModel;
+
+    public ActivityBrandBinding activityBrandBinding;
+
+    public long collection_id;
+
+    public long brand_id;
+
+    public long model_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brand);
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
-        toolbar.setTitle(getString(R.string.main_toolbar_title));
-        setSupportActionBar(toolbar);
-        initBrandGrid();
+        activityBrandBinding = DataBindingUtil.setContentView(this, R.layout.activity_brand);
+        collection_id = getIntent().getLongExtra("collection_id",1);
+        brandViewModel = new BrandViewModel(this);
+        activityBrandBinding.setViewModel(brandViewModel);
+        activityBrandBinding.executePendingBindings();
+        activityBrandBinding.mainToolbar.setTitle(getString(R.string.brand_title));
+        activityBrandBinding.mainToolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        setSupportActionBar(activityBrandBinding.mainToolbar);
+        BrandController.getBrands(this);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    public void initBrandGrid(){
-        brandGridView = findViewById(R.id.brand_grid);
-        String[] items = {"Хонда","Мазда", "БМВ","VW","Лексус"};
-        Bitmap[] images = {
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image),
-                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_brand_dummy_image)
-        };
-        BrandGridAdapter adapter = new BrandGridAdapter(BrandActivity.this, items, images );
-        brandGridView.setAdapter(adapter);
     }
 }

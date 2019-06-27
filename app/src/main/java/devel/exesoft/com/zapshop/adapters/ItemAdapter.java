@@ -10,24 +10,25 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import devel.exesoft.com.zapshop.ItemActivity;
 import devel.exesoft.com.zapshop.R;
+import devel.exesoft.com.zapshop.models.Item;
 
 public class ItemAdapter extends BaseAdapter {
     private Context mContext;
+    private ItemActivity activity;
+    private ArrayList<Item> items;
 
-    private final String[] gridViewString;
-    private final Bitmap[] gridViewImageBitmap;
-
-    public ItemAdapter(Context c, String[] gridViewString, Bitmap[] gridViewImageBitmap) {
-        this.mContext = c;
-        this.gridViewString = gridViewString;
-        this.gridViewImageBitmap = gridViewImageBitmap;
+    public ItemAdapter(ItemActivity activity, ArrayList<Item> items) {
+        this.mContext = activity.getApplicationContext();
+        this.items = items;
     }
 
     @Override
     public int getCount() {
-        return gridViewString.length;
+        return items.size();
     }
 
     @Override
@@ -57,8 +58,11 @@ public class ItemAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        //viewHolder.imageView.setImageBitmap(gridViewImageBitmap[i]);
-        //viewHolder.textView.setText(gridViewString[i]);
+        viewHolder.imageView.setImageBitmap(items.get(i).getImage());
+        viewHolder.textView.setText(items.get(i).getTitle());
+        viewHolder.textViewId.setText(String.valueOf(items.get(i).getId()));
+        viewHolder.textViewPrice.setText(String.valueOf(items.get(i).getPrice()));
+        viewHolder.imageViewCart.setImageResource(R.drawable.ic_shopping_cart_theme_24dp);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,10 +75,15 @@ public class ItemAdapter extends BaseAdapter {
     private class ViewHolder {
         final ImageView imageView;
         final TextView textView;
-
+        final TextView textViewId;
+        final TextView textViewPrice;
+        final ImageView imageViewCart;
         ViewHolder(View view) {
-            imageView = (ImageView) view.findViewById(R.id.item_listview_item_image);
-            textView = (TextView) view.findViewById(R.id.item_listview_item_descr);
+            imageView = view.findViewById(R.id.item_listview_item_image);
+            textView = view.findViewById(R.id.item_listview_item_descr);
+            textViewId  = view.findViewById(R.id.item_id);
+            textViewPrice = view.findViewById(R.id.item_price);
+            imageViewCart = view.findViewById(R.id.item_cart);
         }
     }
 }

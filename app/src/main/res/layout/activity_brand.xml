@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="devel.exesoft.com.zapshop.view_model.BrandViewModel"/>
+    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BrandActivity">
@@ -51,6 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:numColumns="3" />
+            android:numColumns="3"
+            tools:animateLayoutChanges="true" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
+</layout>
