@@ -13,4 +13,8 @@
     <string name="article">Артикул:</string>
     <string name="item_currency">CОМ</string>
     <string name="cart">Корзина</string>
+    <string name="owner_phone">0555 678 867</string>
+    <string name="owner_whatsapp">+996 555 789 987</string>
+    <string name="contacts">Контакты</string>
+    <string name="home">Главная</string>
 </resources>
