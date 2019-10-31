@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import devel.exesoft.com.zapshop.controlles.CategoryController;
 import devel.exesoft.com.zapshop.databinding.ActivityMainBinding;
 import devel.exesoft.com.zapshop.view_model.MainViewModel;
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainViewModel = new MainViewModel(this);
         activityMainBinding.setViewModel(mainViewModel);
-        initDrawerMenu();
         activityMainBinding.executePendingBindings();
         activityMainBinding.mainToolbar.setTitle(getString(R.string.main_toolbar_title));
         activityMainBinding.mainToolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);

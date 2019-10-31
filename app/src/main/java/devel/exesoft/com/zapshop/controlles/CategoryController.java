@@ -63,7 +63,7 @@ public class CategoryController extends  AppController{
                             }
 
                         } catch (Exception excp) {
-                            Log.e(TAG, excp.toString());
+                            excp.printStackTrace();
                         }
                     }
                 }
@@ -77,7 +77,7 @@ public class CategoryController extends  AppController{
 
             getInstance().getRequestQueue().add(jsonObjectRequest);
         }catch (Exception e){
-            Log.d(TAG, e.getStackTrace().toString());
+            e.printStackTrace();
         }
     }
 }

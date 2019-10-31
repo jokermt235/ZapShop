@@ -46,11 +46,10 @@ public class ModelController extends AppController {
                             RecyclerView recyclerView = view.findViewById(R.id.recycler_models);
 
                             //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>();
-                            recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                            /*recyclerView.setLayoutManager(new LinearLayoutManager(activity));
                             recyclerView.setAdapter(new ModelRecyclerAdapter(activity, arrayModels));
-                            recyclerView.setHasFixedSize(true);
-
-
+                            recyclerView.setHasFixedSize(true);*/
+                            activity.showPopup(view, arrayModels);
 
                         } catch (Exception excp) {
                             Log.e(TAG, excp.toString());
