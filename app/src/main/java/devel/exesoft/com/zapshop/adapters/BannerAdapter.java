@@ -2,8 +2,8 @@ package devel.exesoft.com.zapshop.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 
 import org.json.JSONArray;

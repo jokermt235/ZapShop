@@ -1,7 +1,6 @@
 package devel.exesoft.com.zapshop.controlles;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 
 import devel.exesoft.com.zapshop.BrandActivity;
 import devel.exesoft.com.zapshop.R;
-import devel.exesoft.com.zapshop.adapters.ModelRecyclerAdapter;
 import devel.exesoft.com.zapshop.http.CustomStringRequest;
 import devel.exesoft.com.zapshop.models.Model;
 
@@ -50,6 +48,7 @@ public class ModelController extends AppController {
                             recyclerView.setAdapter(new ModelRecyclerAdapter(activity, arrayModels));
                             recyclerView.setHasFixedSize(true);*/
                             activity.showPopup(view, arrayModels);
+
 
                         } catch (Exception excp) {
                             Log.e(TAG, excp.toString());

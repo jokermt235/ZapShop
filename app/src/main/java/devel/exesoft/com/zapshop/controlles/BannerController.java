@@ -13,17 +13,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import devel.exesoft.com.zapshop.BrandActivity;
+import devel.exesoft.com.zapshop.MainActivity;
 import devel.exesoft.com.zapshop.R;
 import devel.exesoft.com.zapshop.adapters.BrandGridAdapter;
 import devel.exesoft.com.zapshop.http.CustomStringRequest;
+import devel.exesoft.com.zapshop.models.Banner;
 import devel.exesoft.com.zapshop.models.Brand;
 
-public class BrandController extends AppController {
-    private static String TAG = "BrandController";
-    public static void getBrands(final BrandActivity activity){
-        try {
-            String source = activity.getString(R.string.api_server)+"brands";
+public class BannerController extends AppController {
+    private static  String TAG = "BannerController";
+    public static void banners(final MainActivity activity) {
+        try{
+            String source = activity.getString(R.string.api_server)+"promos";
             final CustomStringRequest jsonObjectRequest = new CustomStringRequest(source, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -31,31 +32,31 @@ public class BrandController extends AppController {
                     if (response != null) {
                         try {
                             JSONObject result = new JSONObject(response);
-                            JSONArray brands = result.getJSONArray("data");
-                            final ArrayList<Brand> arrayBrands= new ArrayList();
-                            for(int i=0;i<brands.length(); i++){
-                                final Brand brand = new Brand();
-                                brand.setId(brands.getJSONObject(i).getLong("id"));
-                                brand.setTitle(brands.getJSONObject(i).getString("title"));
+                            JSONArray banners = result.getJSONArray("data");
+                            final ArrayList<Banner> arrayBanners= new ArrayList();
+                            for(int i=0;i<banners.length(); i++){
+                                final Banner banner = new Banner();
+                                banner.setId(banners.getJSONObject(i).getLong("id"));
+                                banner.setTitle(banners.getJSONObject(i).getString("title"));
                                 String image_url = activity.getString(R.string.api_server)+activity.getString(R.string.image_sub_url)  +
-                                        brands.getJSONObject(i).getString("image_url") + activity.getString(R.string.token_as_param) ;
+                                        banners.getJSONObject(i).getString("image_url") + activity.getString(R.string.token_as_param);
                                 Log.e(TAG, image_url);
                                 ImageRequest imageRequest = new ImageRequest(image_url, new Response.Listener<Bitmap>() {
                                     @Override
                                     public void onResponse(Bitmap response) {
                                         // callback
-                                        brand.setImage(response);
-                                        arrayBrands.add(brand);
-                                        BrandGridAdapter adapter = new BrandGridAdapter(activity, arrayBrands);
-                                        activity.activityBrandBinding.brandGrid.setAdapter(adapter);
+                                        banner.setImage(response);
+                                        arrayBanners.add(banner);
+                                        //BrandGridAdapter adapter = new BrandGridAdapter(activity, arrayBrands);
+                                        //activity.activityBrandBinding.brandGrid.setAdapter(adapter);
                                     }
-                                }, 128, 128, null, new Response.ErrorListener() {
+                                }, 0, 0, null, new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        brand.setImage(BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_no_image));
-                                        arrayBrands.add(brand);
-                                        BrandGridAdapter adapter = new BrandGridAdapter(activity, arrayBrands);
-                                        activity.activityBrandBinding.brandGrid.setAdapter(adapter);
+                                        //brand.setImage(BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_no_image));
+                                        //arrayBrands.add(brand);
+                                        //BrandGridAdapter adapter = new BrandGridAdapter(activity, arrayBrands);
+                                        //activity.activityBrandBinding.brandGrid.setAdapter(adapter);
                                     }
                                 });
 

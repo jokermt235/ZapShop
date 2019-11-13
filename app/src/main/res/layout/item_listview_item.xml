@@ -112,7 +112,6 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/ic_shopping_cart_theme_24dp" />
-
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
