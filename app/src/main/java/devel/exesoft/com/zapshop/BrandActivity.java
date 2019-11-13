@@ -5,10 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -51,13 +49,6 @@ public class BrandActivity extends AppCompatActivity {
 
     public void showPopup(View v , ArrayList<Model> arrayModels) {
         PopupMenu popup = new PopupMenu(this, v);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                //Toast.makeText(getApplicationContext(), "HELLO ITEM",Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
         MenuInflater inflater = popup.getMenuInflater();
         Menu menu = popup.getMenu();
         for (Model arrayModel: arrayModels) {
