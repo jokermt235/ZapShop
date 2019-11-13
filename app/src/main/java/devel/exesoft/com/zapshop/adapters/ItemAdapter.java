@@ -63,6 +63,12 @@ public class ItemAdapter extends BaseAdapter {
         viewHolder.textViewId.setText(String.valueOf(items.get(i).getId()));
         viewHolder.textViewPrice.setText(String.valueOf(items.get(i).getPrice()));
         viewHolder.imageViewCart.setImageResource(R.drawable.ic_shopping_cart_theme_24dp);
+        viewHolder.imageViewCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
