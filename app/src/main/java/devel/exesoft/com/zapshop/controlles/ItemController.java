@@ -17,7 +17,6 @@ import devel.exesoft.com.zapshop.ItemActivity;
 import devel.exesoft.com.zapshop.R;
 import devel.exesoft.com.zapshop.adapters.ItemAdapter;
 import devel.exesoft.com.zapshop.http.CustomStringRequest;
-import devel.exesoft.com.zapshop.models.Brand;
 import devel.exesoft.com.zapshop.models.Item;
 
 public class ItemController extends AppController {

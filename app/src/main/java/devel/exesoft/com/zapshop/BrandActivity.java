@@ -10,12 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-
 import devel.exesoft.com.zapshop.controlles.BrandController;
-import devel.exesoft.com.zapshop.controlles.ItemController;
 import devel.exesoft.com.zapshop.databinding.ActivityBrandBinding;
 import devel.exesoft.com.zapshop.models.Model;
 import devel.exesoft.com.zapshop.view_model.BrandViewModel;
