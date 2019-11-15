@@ -11,6 +11,7 @@ import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
 
+import devel.exesoft.com.zapshop.MainActivity;
 import devel.exesoft.com.zapshop.R;
 import devel.exesoft.com.zapshop.models.Banner;
 
@@ -23,22 +24,23 @@ public class BannerViewAdapter extends SliderViewAdapter<BannerViewAdapter.Slide
         return new SliderAdapterVH(inflate);
     }
 
-    public void setItems(ArrayList<Banner> items){
-        this.items = items;
 
+    public BannerViewAdapter(MainActivity activity, ArrayList<Banner> items){
+        context = activity;
+        this.items = items;
     }
 
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
-        viewHolder.textViewDescription.setText("This is slider item " + position);
         if(items.size() > 0){
             viewHolder.imageViewBackground.setImageBitmap(items.get(position).getImage());
+            viewHolder.textViewDescription.setText(items.get(position).getTitle());
         }
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return items.size();
     }
 
     class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
