@@ -65,8 +65,14 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.mainToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activityMainBinding.drawerLayout.openDrawer(Gravity.START);
+                activityMainBinding.drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

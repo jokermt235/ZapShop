@@ -4,6 +4,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import devel.exesoft.com.zapshop.databinding.ActivityCartBinding;
 import devel.exesoft.com.zapshop.view_model.CartViewModel;
@@ -25,7 +26,22 @@ public class CartActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId  = item.getItemId();
+        switch (itemId){
+            case R.id.menu_cart_home: cartViewModel.onHomeItemClicked();break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

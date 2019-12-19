@@ -75,4 +75,18 @@ public class BrandActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId  = item.getItemId();
+        switch (itemId){
+            case R.id.main_toolbar_cart: brandViewModel.onCartItemClicked();break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
