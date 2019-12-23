@@ -38,15 +38,7 @@ public class ModelController extends AppController {
                                 model.setBrand_id(models.getJSONObject(i).getLong("brand_id"));
                                 arrayModels.add(model);
                             }
-                            //Spinner spinner = view.findViewById(R.id.model_spinner);
-                            //ListView modelList = view.findViewById(R.id.model_list);
-                            //modelList.setAdapter(new ModelAdapter(activity, arrayModels));
                             RecyclerView recyclerView = view.findViewById(R.id.recycler_models);
-
-                            //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>();
-                            /*recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                            recyclerView.setAdapter(new ModelRecyclerAdapter(activity, arrayModels));
-                            recyclerView.setHasFixedSize(true);*/
                             activity.showPopup(view, arrayModels);
 
 

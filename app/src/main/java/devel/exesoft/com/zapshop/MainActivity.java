@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import devel.exesoft.com.zapshop.controlles.BannerController;
 import devel.exesoft.com.zapshop.controlles.CategoryController;
 import devel.exesoft.com.zapshop.databinding.ActivityMainBinding;
 import devel.exesoft.com.zapshop.view_model.MainViewModel;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(activityMainBinding.mainToolbar);
         initNavogationAction();
         CategoryController.getCategories(this);
+        BannerController.banners(this);
     }
 
     @Override
@@ -62,8 +65,14 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.mainToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activityMainBinding.drawerLayout.openDrawer(Gravity.START);
+                activityMainBinding.drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
