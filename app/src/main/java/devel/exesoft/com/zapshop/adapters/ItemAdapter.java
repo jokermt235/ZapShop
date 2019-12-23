@@ -63,6 +63,7 @@ public class ItemAdapter extends BaseAdapter {
         viewHolder.textViewId.setText(String.valueOf(items.get(i).getId()));
         viewHolder.textViewPrice.setText(String.valueOf(items.get(i).getPrice()));
         viewHolder.imageViewCart.setImageResource(R.drawable.ic_shopping_cart_theme_24dp);
+        viewHolder.imageViewFlag.setImageBitmap(items.get(i).getCountry());
         viewHolder.imageViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,12 +85,14 @@ public class ItemAdapter extends BaseAdapter {
         final TextView textViewId;
         final TextView textViewPrice;
         final ImageView imageViewCart;
+        final ImageView imageViewFlag;
         ViewHolder(View view) {
             imageView = view.findViewById(R.id.item_listview_item_image);
             textView = view.findViewById(R.id.item_listview_item_descr);
             textViewId  = view.findViewById(R.id.item_id);
             textViewPrice = view.findViewById(R.id.item_price);
             imageViewCart = view.findViewById(R.id.item_cart);
+            imageViewFlag  = view.findViewById(R.id.item_listview_country_image);
         }
     }
 }

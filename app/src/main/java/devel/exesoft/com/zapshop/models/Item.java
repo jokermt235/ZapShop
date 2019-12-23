@@ -11,6 +11,7 @@ public class Item {
     private String unit;
     private long collection_id;
     private Bitmap image;
+    private Bitmap country;
 
     public void setId(long id){
         this.id = id;
@@ -75,4 +76,9 @@ public class Item {
     public Bitmap getImage() {
         return image;
     }
+
+    public Bitmap getCountry(){return  country;}
+
+    public void setCountry(Bitmap country){this.country = country;}
+
 }

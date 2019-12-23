@@ -18,7 +18,7 @@ public class AppController extends Application {
     public void onCreate(){
         super.onCreate();
         mInstance = this;
-        Log.e(TAG, "Application controller created");
+        Log.d(TAG, "onCreate");
     }
 
     public static synchronized AppController getInstance() {
