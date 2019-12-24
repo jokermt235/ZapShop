@@ -48,8 +48,8 @@ public class ItemController extends AppController {
                                 item.setPrice(items.getJSONObject(i).getLong("price"));
                                 item.setUnit(items.getJSONObject(i).getString("unit"));
                                 String image_url = activity.getString(R.string.api_server)+activity.getString(R.string.image_sub_url)  +
-                                        items.getJSONObject(i).getString("image_url") + activity.getString(R.string.token_as_param) ;
-                                Log.e(TAG, image_url);
+                                        items.getJSONObject(i).getString("image_url") + activity.getString(R.string.token_as_param);
+
                                 ImageRequest imageRequest = new ImageRequest(image_url, new Response.Listener<Bitmap>() {
                                     @Override
                                     public void onResponse(Bitmap response) {
