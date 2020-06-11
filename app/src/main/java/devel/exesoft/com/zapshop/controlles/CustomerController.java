@@ -26,6 +26,7 @@ public class CustomerController extends  AppController {
 
             JSONObject params = new JSONObject();
             params.put("device_id",activity.getDeviceId());
+            //params.put("cart_token", );
             final CustomStringRequest jsonObjectRequest = new CustomStringRequest(Request.Method.POST,source,params, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

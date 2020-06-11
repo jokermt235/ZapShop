@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import devel.exesoft.com.zapshop.ItemActivity;
 import devel.exesoft.com.zapshop.R;
+import devel.exesoft.com.zapshop.controlles.CartController;
 import devel.exesoft.com.zapshop.models.Item;
 
 public class ItemAdapter extends BaseAdapter {
@@ -47,7 +48,7 @@ public class ItemAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
 
         if (convertView == null) {
             view = inflater.inflate(R.layout.item_listview_item, viewGroup, false);
@@ -67,7 +68,7 @@ public class ItemAdapter extends BaseAdapter {
         viewHolder.imageViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //CartController.add();
             }
         });
         view.setOnClickListener(new View.OnClickListener() {
